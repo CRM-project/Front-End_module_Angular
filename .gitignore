@@ -1,0 +1,6 @@
+.idea
+www
+sources/webapp/styles/**/*.css
+sources/webapp/vendors/node_modules
+sources/webapp/vendors/bower_components
+**/.DS_Store
