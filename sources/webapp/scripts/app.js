@@ -10,13 +10,17 @@ crm.config(['$routeProvider', '$locationProvider',
 
         $routeProvider.
             when('/', {
-               templateUrl: 'tpl/test.html'
+               templateUrl: 'tpl/root.html'
             }).
             when('/users', {
                 templateUrl: 'tpl/user.html',
-                controller: 'userController'
+                controller: 'UserController'
             }).
             otherwise({
                 redirectTo: '/'
             });
     }]);
+
+crm.run(function(){
+    crm.backendUrl = 'http://localhost:8080/';
+});
