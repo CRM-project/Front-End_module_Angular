@@ -1,24 +1,33 @@
 <p>
-    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#userModal"
+    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#companyModal"
             data-ng-click="vm.prepare()">
         <i class="glyphicon glyphicon-plus"></i>
-        New user
+        New company
     </button>
 </p>
 
 <table class="table table-responsive">
     <tr>
-        <th>login</th>
+        <th>shortName</th>
+        <th>fullName</th>
+        <th>type</th>
+        <th>address</th>
+        <th>description</th>
+        <th></th>
     </tr>
-    <tr data-ng-repeat="user in vm.users">
-        <td>{{user.login}}</td>
+    <tr data-ng-repeat="company in vm.companies">
+        <td>{{company.shortName}}</td>
+        <td>{{company.fullName}}</td>
+        <td>{{company.type}}</td>
+        <td>{{company.address}}</td>
+        <td>{{company.description}}</td>
         <td>
-            <button type="button" class="btn btn-link pull-right" data-toggle="modal" data-target="#userModal"
-                    data-ng-click="vm.prepare(user)">
+            <button type="button" class="btn btn-link pull-right" data-toggle="modal" data-target="#companyModal"
+                    data-ng-click="vm.prepare(company)">
                 <i class="glyphicon glyphicon-edit"></i>
             </button>
             <button type="button" class="btn btn-link pull-right"
-                    data-ng-click="vm.remove(user)">
+                    data-ng-click="vm.remove(company)">
                 <i class="glyphicon glyphicon-trash"></i>
             </button>
         </td>
@@ -26,37 +35,37 @@
 </table>
 
 
-<div class="modal fade" id="userModal" role="dialog" aria-labelledby="userModalLabel">
+<div class="modal fade" id="companyModal" role="dialog" aria-labelledby="companyModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="userModalLabel">{{vm.modalTitle}}</h4>
+                <h4 class="modal-title" id="companyModalLabel">{{vm.modalTitle}}</h4>
             </div>
             <div class="modal-body">
-                <form novalidate name="userForm">
+                <form novalidate name="companyForm">
                     <div class="form-group has-feedback"
-                         data-ng-class="userForm.login.$error.required ? 'has-error' : 'has-success'">
+                         data-ng-class="companyForm.login.$error.required ? 'has-error' : 'has-success'">
                         <label for="login" class="control-label">Имя</label>
-                        <input type="text" autofocus id="login" name="login" class="form-control" data-ng-model="vm.user.login"
+                        <input type="text" autofocus id="login" name="login" class="form-control" data-ng-model="vm.company.login"
                                required>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"
-                              data-ng-class="userForm.login.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
+                              data-ng-class="companyForm.login.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <!--<button class="btn btn-danger" data-toggle="modal" data-target="#removeModal"
                                     data-ng-show="vm.control == 'update'"
-                                    data-ng-click="vm.prepare(vm.user)">
+                                    data-ng-click="vm.prepare(vm.company)">
                     <i class="glyphicon glyphicon-trash"></i>
                 </button>-->
                 <button class="btn btn-default" data-dismiss="modal">Закрыть</button>
                 <button class="btn btn-primary" data-dismiss="modal"
-                        data-ng-disabled="userForm.$invalid"
-                        data-ng-click="vm.user.id ? vm.update() : vm.create()">
+                        data-ng-disabled="companyForm.$invalid"
+                        data-ng-click="vm.company.id ? vm.update() : vm.create()">
                     Сохранить
                 </button>
             </div>

@@ -1,4 +1,6 @@
 
-crm.factory('user', ['$resourse', function($resourse) {
-    return $resourse(app.backendUrl + "user/user/:id")
-}]);
+crm.factory('UserFactory', function($resource) {
+    return $resource(crm.backendUrl + "user/user/:id", {}, {
+        update: {method: 'PUT'}
+    });
+});

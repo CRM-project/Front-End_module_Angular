@@ -16,6 +16,10 @@ crm.config(['$routeProvider', '$locationProvider',
                 templateUrl: 'tpl/user.html',
                 controller: 'UserController'
             }).
+            when('/companies', {
+                templateUrl: 'tpl/company.html',
+                controller: 'CompanyController'
+            }).
             otherwise({
                 redirectTo: '/'
             });
