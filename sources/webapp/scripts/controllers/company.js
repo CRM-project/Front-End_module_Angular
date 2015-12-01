@@ -16,6 +16,10 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
         $scope.vm.companies = data;
     });
 
+    CompanyFactory.query({params: 'email'}, function (data) {
+        console.log(data);
+    });
+
     $scope.vm.create = function() {
         CompanyFactory.save($scope.vm.company, function (data) {
             $scope.vm.company.id = data.id;
@@ -37,5 +41,80 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
             company = undefined;
         });
     };
+
+    $scope.vm.getExtendedData = function(company) {
+
+        var entity = "phone";
+        $http({
+            method: 'GET',
+            url: crm.backendUrl+"company/company/get"+entity+"list/"+company.id
+        }).then(function successCallback(response) {
+            $scope.phones = response.data;
+            console.log(response.data);
+        }, function errorCallback(response) {
+            if (response.status == '500') {
+                console.log('pisoooot');
+                $scope.phones = null;
+            }
+        });
+
+        var entity = "email";
+        $http({
+            method: 'GET',
+            url: crm.backendUrl+"company/company/get"+entity+"list/"+company.id
+        }).then(function successCallback(response) {
+            $scope.emails = response.data;
+            console.log(response.data);
+        }, function errorCallback(response) {
+            if (response.status == '500') {
+                console.log('pisoooot');
+                $scope.emails = null;
+            }
+        });
+
+        var entity = "social";
+        $http({
+            method: 'GET',
+            url: crm.backendUrl+"company/company/get"+entity+"list/"+company.id
+        }).then(function successCallback(response) {
+            $scope.socials = response.data;
+            console.log(response.data);
+        }, function errorCallback(response) {
+            if (response.status == '500') {
+                console.log('pisoooot');
+                $scope.socials = null;
+            }
+        });
+
+        var entity = "website";
+        $http({
+            method: 'GET',
+            url: crm.backendUrl+"company/company/get"+entity+"list/"+company.id
+        }).then(function successCallback(response) {
+            $scope.websites = response.data;
+            console.log(response.data);
+        }, function errorCallback(response) {
+            if (response.status == '500') {
+                console.log('pisoooot');
+                $scope.websites = null;
+            }
+        });
+
+        var entity = "tag";
+        $http({
+            method: 'GET',
+            url: crm.backendUrl+"company/company/get"+entity+"list/"+company.id
+        }).then(function successCallback(response) {
+            $scope.tags = response.data;
+            console.log(response.data);
+        }, function errorCallback(response) {
+            if (response.status == '500') {
+                console.log('pisoooot');
+                $scope.tags = null;
+            }
+        });
+
+    };
+
 
 });

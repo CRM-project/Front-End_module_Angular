@@ -13,6 +13,11 @@
         <th>type</th>
         <th>address</th>
         <th>description</th>
+<!--        <th>mails</th>
+        <th>phones</th>
+        <th>socials</th>
+        <th>websites</th>
+        <th>tags</th>-->
         <th></th>
     </tr>
     <tr data-ng-repeat="company in vm.companies">
@@ -22,6 +27,10 @@
         <td>{{company.address}}</td>
         <td>{{company.description}}</td>
         <td>
+            <button type="button" class="btn btn-link pull-right" data-toggle="modal" data-target="#companyExtendedModal"
+                    data-ng-click="vm.getExtendedData(company)">
+                <i class="glyphicon glyphicon-triangle-right"></i>
+            </button>
             <button type="button" class="btn btn-link pull-right"
                     data-ng-click="vm.remove(company)">
                 <i class="glyphicon glyphicon-trash"></i>
@@ -33,6 +42,84 @@
         </td>
     </tr>
 </table>
+
+
+
+
+
+<div class="modal fade" id="companyExtendedModal" role="dialog" aria-labelledby="companyExtendedLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="companyExtendedLabel">Extended information</h4>
+            </div>
+            <div class="modal-body">
+
+                <table data-ng-if="phones !== null" class="table">
+                    <tr>
+                        <th>Corporate phones</th>
+                    </tr>
+                    <tr data-ng-repeat="phone in phones">
+                        <td><p><small>{{$index+1}}.</small> {{phone.phone}} <small>{{phone.type}}</small></p></td>
+                    </tr>
+                </table>
+
+                <table data-ng-if="emails !== null" class="table">
+                    <tr>
+                        <th>Corporate emails</th>
+                    </tr>
+                    <tr data-ng-repeat="email in emails">
+                        <td><p><small>{{$index+1}}.</small> {{email.email}} <small>{{email.type}}</small></p></td>
+                    </tr>
+
+                </table>
+
+                <table data-ng-if="socials !== null" class="table">
+                    <tr>
+                        <th>Corporate social</th>
+                    </tr>
+                    <tr data-ng-repeat="social in socials">
+                        <td><p><small>{{$index+1}}.</small> {{social.socialUrl}} <small>{{social.type}}</small></p></td>
+                    </tr>
+                </table>
+
+                <table data-ng-if="websites !== null" class="table">
+                    <tr>
+                        <th>Corporate website</th>
+                    </tr>
+                    <tr data-ng-repeat="website in websites">
+                        <td><p><small>{{$index+1}}.</small> {{website.websiteUrl}} <small>{{website.type}}</small></p></td>
+                    </tr>
+                </table>
+
+                <table data-ng-if="tags !== null" class="table">
+                    <tr>
+                        <th>Tags</th>
+                    </tr>
+                    <tr data-ng-repeat="tag in tags">
+                        <td><p><small>{{$index+1}}.</small> {{tag.title}} <small>{{tag.type}}</small></p></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+
+                <button class="btn btn-default" data-dismiss="modal">Закрыть</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 
 <div class="modal fade" id="companyModal" role="dialog" aria-labelledby="companyModalLabel">

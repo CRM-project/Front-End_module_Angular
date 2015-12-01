@@ -6,7 +6,7 @@ npm install
 <br>
 bower i
 <br>
-then run gulp (run gulp file or configure IDE)
+then run gulp (run gulp file or configure1 IDE)
 <br>
 cd ../../
 <br>
