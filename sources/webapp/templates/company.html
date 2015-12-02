@@ -100,7 +100,8 @@
                         <th>Tags</th>
                     </tr>
                     <tr data-ng-repeat="tag in tags">
-                        <td><p><small>{{$index+1}}.</small> {{tag.title}} <small>{{tag.type}}</small></p></td>
+                        <td><p><small>{{$index+1}}.</small> <span class="label label-{{tag.type}}">{{tag.title}}</span> </p></td>
+
                     </tr>
                 </table>
 

@@ -16,10 +16,6 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
         $scope.vm.companies = data;
     });
 
-    CompanyFactory.query({params: 'email'}, function (data) {
-        console.log(data);
-    });
-
     $scope.vm.create = function() {
         CompanyFactory.save($scope.vm.company, function (data) {
             $scope.vm.company.id = data.id;
