@@ -16,6 +16,7 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
         $scope.vm.companies = data;
     });
 
+
     $scope.vm.create = function() {
         CompanyFactory.save($scope.vm.company, function (data) {
             $scope.vm.company.id = data.id;
