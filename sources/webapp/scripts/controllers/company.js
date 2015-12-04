@@ -20,6 +20,7 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
     $scope.vm.create = function() {
         CompanyFactory.save($scope.vm.company, function (data) {
             $scope.vm.company.id = data.id;
+            $scope.vm.company.type = "company";
             $scope.vm.companies.push($scope.vm.company);
             $scope.vm.prepare($scope.vm.company);
         });
@@ -44,7 +45,7 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
         var entity = "phone";
         $http({
             method: 'GET',
-            url: crm.backendUrl+"company/get"+entity+"list/"+company.id
+            url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
             $scope.phones = response.data;
             console.log(response.data);
@@ -58,7 +59,7 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
         var entity = "email";
         $http({
             method: 'GET',
-            url: crm.backendUrl+"company/get"+entity+"list/"+company.id
+            url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
             $scope.emails = response.data;
             console.log(response.data);
@@ -72,7 +73,7 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
         var entity = "social";
         $http({
             method: 'GET',
-            url: crm.backendUrl+"company/get"+entity+"list/"+company.id
+            url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
             $scope.socials = response.data;
             console.log(response.data);
@@ -86,7 +87,7 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
         var entity = "website";
         $http({
             method: 'GET',
-            url: crm.backendUrl+"company/get"+entity+"list/"+company.id
+            url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
             $scope.websites = response.data;
             console.log(response.data);
@@ -100,7 +101,7 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
         var entity = "tag";
         $http({
             method: 'GET',
-            url: crm.backendUrl+"company/get"+entity+"list/"+company.id
+            url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
             $scope.tags = response.data;
             console.log(response.data);
@@ -112,6 +113,5 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
         });
 
     };
-
 
 });

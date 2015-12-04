@@ -4,11 +4,6 @@ crm.controller('UserController', function($scope, $http, UserFactory) {
 
     $scope.vm = {};
 
-    /*UserFactory.query(function(data) {
-        console.log(data);
-        $scope.vm.users = data;
-    });*/
-
     $scope.vm.prepare = function (user) {
         $scope.vm.modalTitle = user ? 'Изменение профиля пользователя: ' + user.login : 'Новый профиль';
         $scope.vm.user = angular.copy(user) || {};
@@ -16,6 +11,10 @@ crm.controller('UserController', function($scope, $http, UserFactory) {
     };
 
     $scope.vm.users = UserFactory.query();
+    /*UserFactory.query(function(data) {
+        console.log(data);
+        $scope.vm.users = data;
+    });*/
 
     $scope.vm.create = function() {
         UserFactory.save($scope.vm.user, function (data) {
