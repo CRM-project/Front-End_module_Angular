@@ -42,18 +42,31 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
 
     $scope.vm.getExtendedData = function(company) {
 
+        var exception = function(status) {
+            if (status == '500') {
+                console.log('pisoooot');
+                return 500;
+            }
+            if (status == '204') {
+                console.log('204=)');
+                return 204;
+            }
+            else return 200;
+        };
+
         var entity = "phone";
         $http({
             method: 'GET',
             url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
             $scope.phones = response.data;
-            console.log(response.data);
+            //console.log(response.data+" data");
+            //console.log(response.status+" status");
+            //console.log(response.headers+" headers");
+            //console.log(response.config+" config");
+            if ((exception(response.status)) !== 200) {$scope.phones = null;}
         }, function errorCallback(response) {
-            if (response.status == '500') {
-                console.log('pisoooot');
-                $scope.phones = null;
-            }
+            exception(response.status);
         });
 
         var entity = "email";
@@ -61,13 +74,15 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
             method: 'GET',
             url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
+            console.log(response);
             $scope.emails = response.data;
-            console.log(response.data);
+            //console.log(response.data+" data");
+            //console.log(response.status+" status");
+            //console.log(response.headers+" headers");
+            //console.log(response.config+" config");
+            if ((exception(response.status)) !== 200) {$scope.emails = null;}
         }, function errorCallback(response) {
-            if (response.status == '500') {
-                console.log('pisoooot');
-                $scope.emails = null;
-            }
+            exception(response.status);
         });
 
         var entity = "social";
@@ -76,12 +91,13 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
             url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
             $scope.socials = response.data;
-            console.log(response.data);
+            //console.log(response.data+" data");
+            //console.log(response.status+" status");
+            //console.log(response.headers+" headers");
+            //console.log(response.config+" config");
+            if ((exception(response.status)) !== 200) {$scope.socials = null;}
         }, function errorCallback(response) {
-            if (response.status == '500') {
-                console.log('pisoooot');
-                $scope.socials = null;
-            }
+            exception(response.status);
         });
 
         var entity = "website";
@@ -90,12 +106,13 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
             url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
             $scope.websites = response.data;
-            console.log(response.data);
+            //console.log(response.data+" data");
+            //console.log(response.status+" status");
+            //console.log(response.headers+" headers");
+            //console.log(response.config+" config");
+            if ((exception(response.status)) !== 200) {$scope.websites = null;}
         }, function errorCallback(response) {
-            if (response.status == '500') {
-                console.log('pisoooot');
-                $scope.websites = null;
-            }
+            exception(response.status);
         });
 
         var entity = "tag";
@@ -103,13 +120,15 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
             method: 'GET',
             url: crm.backendUrl+"company/"+entity+"/"+company.id
         }).then(function successCallback(response) {
+            console.log(response);
             $scope.tags = response.data;
-            console.log(response.data);
+            //console.log(response.data+" data");
+            //console.log(response.status+" status");
+            //console.log(response.headers+" headers");
+            //console.log(response.config+" config");
+            if ((exception(response.status)) !== 200) {$scope.tags = null;}
         }, function errorCallback(response) {
-            if (response.status == '500') {
-                console.log('pisoooot');
-                $scope.tags = null;
-            }
+            exception(response.status);
         });
 
     };
