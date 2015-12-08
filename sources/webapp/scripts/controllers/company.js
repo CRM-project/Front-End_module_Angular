@@ -20,9 +20,8 @@ crm.controller('CompanyController', function($scope, $http, CompanyFactory) {
     $scope.vm.create = function() {
         CompanyFactory.save($scope.vm.company, function (data) {
             $scope.vm.company.id = data.id;
-            $scope.vm.company.type = "company";
             $scope.vm.companies.push($scope.vm.company);
-            $scope.vm.prepare($scope.vm.company);
+            //$scope.vm.prepare($scope.vm.company);
         });
     };
 

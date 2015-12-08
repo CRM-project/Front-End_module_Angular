@@ -1,3 +1,6 @@
+<h1>User <small>page list</small></h1>
+<hr>
+
 <p>
     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#userModal"
             data-ng-click="vm.prepare()">
@@ -6,9 +9,11 @@
     </button>
 </p>
 
+
 <table class="table table-responsive">
     <tr>
         <th>login</th>
+        <th></th>
     </tr>
     <tr data-ng-repeat="user in vm.users">
         <td>{{user.login}}</td>
