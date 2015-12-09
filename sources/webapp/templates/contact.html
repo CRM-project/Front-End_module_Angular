@@ -12,6 +12,22 @@
     </button>
 </p>
 
+<ul class="nav nav-tabs">
+    <li role="presentation" data-ng-click="vm.tab = 0" data-ng-class="{'active': vm.modalTab == 0}"><a href="#">All Contacts</a></li>
+    <li role="presentation" data-ng-click="vm.tab = 1" data-ng-class="{'active': vm.modalTab == 1}"><a href="#">Company</a></li>
+    <li role="presentation" data-ng-click="vm.tab = 2" data-ng-class="{'active': vm.modalTab == 2}"><a href="#">Individual</a></li>
+</ul>
+<hr>
+<div ng-show="vm.tab == 0">
+    <h4>All Contacts</h4>
+</div>
+<div ng-show="vm.tab == 1">
+    <h4>Company</h4>
+</div>
+<div ng-show="vm.tab == 2">
+    <h4>Individual</h4>
+</div>
+
 <table class="table table-responsive">
     <tr>
         <th>shortName</th>
@@ -26,7 +42,10 @@
                 <th>tags</th>-->
         <th></th>
     </tr>
-    <tr data-ng-repeat="contact in vm.contacts">
+
+
+    <!---->
+    <tr data-ng-repeat="contact in vm.contacts" ng-show="vm.tab == 0">
         <td>{{contact.shortName}}</td>
         <td>{{contact.fullName}}</td>
         <td>{{contact.type}}</td>
@@ -54,6 +73,65 @@
             </button>
         </td>
     </tr>
+    <!---->
+    <tr data-ng-repeat="contact in vm.contacts" ng-show="vm.tab == 1" ng-if="contact.type == 'company'">
+        <td>{{contact.shortName}}</td>
+        <td>{{contact.fullName}}</td>
+        <td>{{contact.type}}</td>
+        <td>{{contact.address}}</td>
+        <td>{{contact.description}}</td>
+        <td>
+            <button type="button"
+                    class="btn btn-link pull-right"
+                    disabled
+                    data-toggle="modal" data-target="#contactExtendedModal"
+                    data-ng-click="vm.getExtendedData(contact)">
+                <i class="glyphicon glyphicon-triangle-right"></i>
+            </button>
+            <button type="button"
+                    class="btn btn-link pull-right"
+                    data-ng-click="vm.remove(contact)">
+                <i class="glyphicon glyphicon-trash"></i>
+            </button>
+            <button type="button"
+                    class="btn btn-link pull-right"
+                    data-toggle="modal"
+                    data-target="#contactModal"
+                    data-ng-click="vm.prepare(contact)">
+                <i class="glyphicon glyphicon-edit"></i>
+            </button>
+        </td>
+    </tr>
+    <!---->
+    <tr data-ng-repeat="contact in vm.contacts" ng-show="vm.tab == 2" ng-if="contact.type == 'individual'">
+        <td>{{contact.shortName}}</td>
+        <td>{{contact.fullName}}</td>
+        <td>{{contact.type}}</td>
+        <td>{{contact.address}}</td>
+        <td>{{contact.description}}</td>
+        <td>
+            <button type="button"
+                    class="btn btn-link pull-right"
+                    disabled
+                    data-toggle="modal" data-target="#contactExtendedModal"
+                    data-ng-click="vm.getExtendedData(contact)">
+                <i class="glyphicon glyphicon-triangle-right"></i>
+            </button>
+            <button type="button"
+                    class="btn btn-link pull-right"
+                    data-ng-click="vm.remove(contact)">
+                <i class="glyphicon glyphicon-trash"></i>
+            </button>
+            <button type="button"
+                    class="btn btn-link pull-right"
+                    data-toggle="modal"
+                    data-target="#contactModal"
+                    data-ng-click="vm.prepare(contact)">
+                <i class="glyphicon glyphicon-edit"></i>
+            </button>
+        </td>
+    </tr>
+
 </table>
 
 <div class="modal fade" id="contactModal" role="dialog" aria-labelledby="contactModalLabel">

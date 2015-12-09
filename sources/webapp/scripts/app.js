@@ -63,4 +63,5 @@ crm.config(['$routeProvider', '$locationProvider',
 
 crm.run(function(){
     crm.backendUrl = 'http://localhost:8080/';
+    //crm.backendUrl = 'http://192.168.50.5:8080/crm/';
 });

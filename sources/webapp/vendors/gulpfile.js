@@ -49,6 +49,7 @@ var vendors = {
     styles: [
         'bower_components/bootstrap/dist/css/bootstrap.css',
         'bower_components/normalize.css/normalize.css'//,
+        //'bower_components/animate.css/animate.css'
         //'bower_components/bootswatch/cerulean/bootstrap.css'
     ],
     fonts: [
