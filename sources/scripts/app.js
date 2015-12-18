@@ -58,5 +58,5 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 });
 
 app.run(function () {
-    app.backendUrl = 'http://192.168.50.5:8080/crm';
+    app.backendUrl = 'http://192.168.50.229:8080/crm';
 });

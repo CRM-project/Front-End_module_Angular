@@ -68,7 +68,7 @@ gulp.task('view', function () {
 gulp.task('default', ['script', 'style', 'view'], function () {
     connect.server({
         root: 'www',
-        port: 3001,
+        port: 3004,
         host: 'localhost',
         fallback: 'www/index.html'
     });
