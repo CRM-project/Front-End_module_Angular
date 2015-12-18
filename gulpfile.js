@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var connect = require('gulp-connect');
 var less = require('gulp-less');
+var rimraf = require('gulp-rimraf');
 
 var bower = {
     fonts: [
@@ -9,7 +10,6 @@ var bower = {
     ],
     scripts: [
         'bower_components/angular/angular.js',
-        'bower_components/angular-messages/angular-messages.js',
         'bower_components/angular-resource/angular-resource.js',
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'bower_components/jquery/dist/jquery.js',
@@ -17,7 +17,7 @@ var bower = {
     ],
     styles: [
         'bower_components/bootstrap/dist/css/bootstrap.css',
-        'bower_components/bootswatch/cosmo/bootstrap.css'
+        'bower_components/bootswatch/yeti/bootstrap.css'
     ]
 };
 
@@ -65,10 +65,24 @@ gulp.task('view', function () {
         .pipe(gulp.dest(www.views));
 });
 
+gulp.task('clear', function () {
+    gulp.src(www.fonts)
+        .pipe(rimraf());
+
+    gulp.src(www.scripts)
+        .pipe(rimraf());
+
+    gulp.src(www.styles)
+        .pipe(rimraf());
+
+    gulp.src(www.views)
+        .pipe(rimraf());
+});
+
 gulp.task('default', ['script', 'style', 'view'], function () {
     connect.server({
         root: 'www',
-        port: 3004,
+        port: 33333,
         host: 'localhost',
         fallback: 'www/index.html'
     });

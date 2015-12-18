@@ -1,11 +1,10 @@
 {
-  "name": "crm",
+  "name": "CRM",
   "version": "0.0.1",
   "dependencies": {
     "angular": "~1.4.8",
-    "angular-messages": "~1.4.8",
     "angular-resource": "~1.4.8",
-    "angular-ui-router": "ui-router#~0.2.15",
+    "angular-ui-router": "~0.2.15",
     "bootstrap": "~3.3.6",
     "bootswatch": "~3.3.6"
   }
